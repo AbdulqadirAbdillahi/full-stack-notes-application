@@ -32,3 +32,20 @@ const readData = () => {
 const writeData = (data) => {
   fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
 };
+
+
+// app.get("/", (req,res) => {
+//   res.send("server is fully working");
+// });
+// testing if the server is working
+
+app.get("/data", (req, res) => {
+  const data = readData();
+  res.json(data);
+});
+// getting all the data
+
+// Start the server and listen on the specified port
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
