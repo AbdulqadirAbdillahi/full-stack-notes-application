@@ -86,10 +86,3 @@ npm install express
 
 For guidance on deployment, refer to this article:  
 🔗 [Deploying a Node.js Server Application on Render](https://medium.com/@harshpatil3775/deploying-a-node-js-server-application-on-render-com-5a123b33862d)
-
-## Submission
-
-To complete this exercise, submit:
-
-- The GitHub repository link
-- The deployed Render.com application link
