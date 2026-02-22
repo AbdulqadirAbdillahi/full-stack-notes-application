@@ -2,7 +2,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-// const { v4: uuidv4 } = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 
 // Create an instance of an Express application
 const app = express();
@@ -33,6 +33,8 @@ const writeData = (data) => {
   fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+// RETRIEVING ALL ROUTES
 
 // app.get("/", (req,res) => {
 //   res.send("server is fully working");
@@ -44,6 +46,35 @@ app.get("/data", (req, res) => {
   res.json(data);
 });
 // getting all the data
+
+app.post("/data", (req, res) => {
+  const newData = { id: uuidv4(), ...req.body };
+  const currentData = readData();
+  currentData.push(newData);
+  writeData(currentData);
+  res.json({ message: "Data saved successfully", data: newData });
+}); 
+// POST -  
+// Handle POST request to save new data with a unique ID
+// npm install uuid installed for this
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
