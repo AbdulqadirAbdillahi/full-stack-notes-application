@@ -59,7 +59,13 @@ app.post("/data", (req, res) => {
 // (npm install uuid) - installed for this
 
 
-
+app.put("/data/:id", (req, res) => {
+  const freshData = readData();
+  const specificItem = freshData.find(i => i.id = req.params.id);
+  specificItem.name = req.body.name;
+  writeData(freshData);
+  res.json({message: "It has been updated"})
+});
 
 
 
