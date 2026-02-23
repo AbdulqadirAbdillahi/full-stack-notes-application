@@ -61,10 +61,15 @@ app.post("/data", (req, res) => {
 
 app.put("/data/:id", (req, res) => {
   const freshData = readData();
+  // obtains the list of all items
   const specificItem = freshData.find(i => i.id = req.params.id);
+  // finds a specific item via the ID
   specificItem.name = req.body.name;
+  // this updates the name with new information
   writeData(freshData);
+  // this saves the new list to the database file
   res.json({message: "It has been updated"})
+  
 });
 
 
