@@ -54,7 +54,7 @@ app.post("/data", (req, res) => {
   writeData(currentData);
   res.json({ message: "Data saved successfully", data: newData });
 }); 
-// POST -  
+// POST create new note
 // Handle POST request to save new data with a unique ID
 // (npm install uuid) - installed for this
 
@@ -62,7 +62,7 @@ app.post("/data", (req, res) => {
 app.put("/data/:id", (req, res) => {
   const freshData = readData();
   // obtains the list of all items
-  const specificItem = freshData.find(i => i.id = req.params.id);
+  const specificItem = freshData.find(i => i.id === req.params.id);
   // finds a specific item via the ID
   specificItem.name = req.body.name;
   // this updates the name with new information
@@ -71,6 +71,11 @@ app.put("/data/:id", (req, res) => {
   res.json({message: "It has been updated"})
   
 });
+
+app.delete("/data/:id", (req, res) => {
+  const freshData = readData();
+
+}
 
 
 

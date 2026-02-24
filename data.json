@@ -1,6 +1,14 @@
 [
   {
     "id": "1",
-    "name": "new item is being added right here"
+    "name": "First Note"
+  },
+  {
+    "id": "f3d306ca-1118-4f20-adca-725fab545f33",
+    "name": "updated note"
+  },
+  {
+    "id": "dc7809b6-dabc-4377-8999-f52b6b9e01e4",
+    "name": "updated note"
   }
 ]
