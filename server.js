@@ -67,7 +67,7 @@ app.put("/data/:id", (req, res) => {
   specificItem.name = req.body.name;
   // this updates the name with new information
   writeData(freshData);
-  // this saves the new list to the database file
+  // this saves the new list to data.json
   res.json({message: "It has been updated"})
   
 });
@@ -76,8 +76,11 @@ app.delete("/data/:id", (req, res) => {
   const freshData = readData();
   const specificItem = freshData.find(i => i.id === req.params.id);
   const item = freshData.indexOf(specificItem);
+  // finds the item is inside the array
   freshData.splice(item, 1);
+  // eradicates the item from the array
   writeData(freshData);
+  // saves the new list to data.json
   res.json({message: "This has been deleted!!!"});
 
 });
