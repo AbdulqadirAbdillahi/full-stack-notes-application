@@ -74,8 +74,13 @@ app.put("/data/:id", (req, res) => {
 
 app.delete("/data/:id", (req, res) => {
   const freshData = readData();
+  const specificItem = freshData.find(i => i.id === req.params.id);
+  const item = freshData.indexOf(specificItem);
+  freshData.splice(item, 1);
+  writeData(freshData);
+  res.json({message: "This has been deleted!!!"});
 
-}
+});
 
 
 
