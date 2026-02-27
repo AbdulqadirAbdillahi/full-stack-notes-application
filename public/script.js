@@ -24,7 +24,29 @@ async function getNotes() {
         li.appendChild(deleteButton);
         tasklist.appendChild(li);
     });
-    
+
 }
+
+    buttonEl.addEventListener("click", async () =>{
+        const inputNote = {name : input.value};
+
+        try{
+            const response = await fetch("/data",{
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(inputNote),
+            });
+
+            if (response.ok) {
+                input.value = "";
+                getNotes();
+            }
+        } catch (error) {
+            console.error("There is a error adding this note!!:");
+        }
+
+    
+    });
+
 
 getNotes();
