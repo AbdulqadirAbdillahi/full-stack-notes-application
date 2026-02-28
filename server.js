@@ -8,7 +8,7 @@ const { v4: uuidv4 } = require("uuid");
 const app = express();
 
 // Define the port the server will listen on
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
@@ -64,6 +64,12 @@ app.put("/data/:id", (req, res) => {
   // obtains the list of all items
   const specificItem = freshData.find(i => i.id === req.params.id);
   // finds a specific item via the ID
+
+  if (!specificItem) {
+    return res.status(404).json({ message: "Note not found!" });
+  }
+  // error handling for deployment
+
   specificItem.name = req.body.name;
   // this updates the name with new information
   writeData(freshData);
@@ -75,6 +81,12 @@ app.put("/data/:id", (req, res) => {
 app.delete("/data/:id", (req, res) => {
   const freshData = readData();
   const specificItem = freshData.find(i => i.id === req.params.id);
+
+  if (!specificItem) {
+    return res.status(404).json({ message: "Note not found!" });
+  }
+  // error handling for deployment
+  
   const item = freshData.indexOf(specificItem);
   // finds the item is inside the array
   freshData.splice(item, 1);
@@ -90,5 +102,5 @@ app.delete("/data/:id", (req, res) => {
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
