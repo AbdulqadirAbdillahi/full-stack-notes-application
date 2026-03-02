@@ -102,5 +102,7 @@ app.delete("/data/:id", (req, res) => {
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running at: http://localhost:${PORT}`);
 });
+// app.listen -> listens for incoming requests on this port
+// console.log(`Server running at: http://localhost:${PORT}`); -> prints the text to the terminal
